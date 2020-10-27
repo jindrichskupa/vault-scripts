@@ -1,4 +1,9 @@
-# Convert gitlab ENV variables into vault KV(v2) and convert KV(v2) into dotENV file
+# Useful vault scripts
+
+* gitlab2vault.rb
+  * converts Gitlab ENV variables and save them into vault
+* vault2dotenv.rb
+  * read vault kv and save it into `.env` file
 
 ## Usage
 
