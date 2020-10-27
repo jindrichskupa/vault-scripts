@@ -63,3 +63,26 @@ Usage: vault2dotenv.rb [options]
   --dot-env .env \
   --export
 ```
+
+### Command - vault2secret.rb
+
+```
+Usage: vault2dotenv.rb [options]
+    -k, --key-value KEYVALUEPATH     Vault secret path
+    -f, --file FILE                  Ouput file
+    -v, --vault VAULTURL             Vault URL
+    -u, --vault-token VAULTTOKEN     Vault token
+    -n, --name NAME                  Secret name
+    -m, --namespace NAMESPACE        Secret namespace
+```
+
+### Example - vault2secret.rb
+
+```bash
+./vault2secret.rb --vault https://vault.example.com \
+   --vault-token s.xWxWxWxWxW \
+   --key-value kv/data/data/vault-secrets-demo/master/envs \
+   --file secret.yml \
+   --name env \
+   --namespace master
+```
