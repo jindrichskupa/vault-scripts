@@ -4,6 +4,8 @@
   * converts Gitlab ENV variables and save them into vault
 * vault2dotenv.rb
   * read vault kv and save it into `.env` file
+* vault2secret.rb
+  * read vault kv and save it into kubernetes secrets file
 
 ## Usage
 
