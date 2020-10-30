@@ -33,6 +33,10 @@ optparse = OptionParser.new do |opts|
   opts.on('-m', '--namespace NAMESPACE', 'Secret namespace') do |v|
     options[:namespace] = v
   end
+
+  opts.on('-b', '--base64', 'Vault values are Base64 encoded') do |v|
+    options[:base64] = true
+  end
 end
 
 optparse.parse!
@@ -64,7 +68,7 @@ output = {
   'data' => {}
 }
 vault_keys.data[:data].each do |k,v|
-  output['data'][k.to_s]=Base64.strict_encode64 v
+  output['data'][k.to_s]= (options[:base64] ? v : Base64.strict_encode64(v))
 end
 
 if options[:file].nil?

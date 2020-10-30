@@ -6,6 +6,8 @@
   * read vault kv and save it into `.env` file
 * vault2secret.rb
   * read vault kv and save it into kubernetes secrets file
+* files2vault.rb
+  * save all files from local directory into vault key
 
 ## Usage
 
@@ -69,13 +71,14 @@ Usage: vault2dotenv.rb [options]
 ### Command - vault2secret.rb
 
 ```
-Usage: vault2dotenv.rb [options]
+Usage: vault2secret.rb [options]
     -k, --key-value KEYVALUEPATH     Vault secret path
     -f, --file FILE                  Ouput file
     -v, --vault VAULTURL             Vault URL
     -u, --vault-token VAULTTOKEN     Vault token
     -n, --name NAME                  Secret name
     -m, --namespace NAMESPACE        Secret namespace
+    -b, --base64                     Vault values are Base64 encoded
 ```
 
 ### Example - vault2secret.rb
@@ -87,4 +90,31 @@ Usage: vault2dotenv.rb [options]
    --file secret.yml \
    --name env \
    --namespace master
+# or 
+./vault2secret.rb --vault https://vault.example.com \
+   --vault-token s.xWxWxWxWxW \
+   --key-value kv/data/data/vault-secrets-demo/master/files \
+   --file secret.yml \
+   --name env \
+   --namespace master \
+   --base64
+```
+
+### Command - files2vault.rb
+
+```bash
+Usage: files2vault.rb [options]
+    -k, --key-value KEYVALUEPATH     Vault secret path
+    -v, --vault VAULTURL             Vault URL
+    -u, --vault-token VAULTTOKEN     Vault token
+    -d, --directory DIR              Directory
+```
+
+### Example - files2vault.rb
+
+```
+./files2vault.rb --vault https://vault.example.com \
+   --vault-token s.xWxWxWxWxW \
+   --key-value kv/data/data/vault-secrets-demo/master/files \
+   --directory certs
 ```
