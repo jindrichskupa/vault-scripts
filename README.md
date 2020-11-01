@@ -8,6 +8,8 @@
   * read vault kv and save it into kubernetes secrets file
 * files2vault.rb
   * save all files from local directory into vault key
+* vault2vault.rb
+  * copy one vault key to another
 
 ## Usage
 
@@ -117,4 +119,23 @@ Usage: files2vault.rb [options]
    --vault-token s.xWxWxWxWxW \
    --key-value kv/data/data/vault-secrets-demo/master/files \
    --directory certs
+```
+
+### Command - vault2vault.rb
+
+```
+Usage: vault2vault.rb [options]
+    -k, --key-value1 KEYVALUEPATH1   Source vault secret path
+    -l, --key-value2 KEYVALUEPATH2   Destination vault secret path
+    -v, --vault VAULTURL             Vault URL
+    -u, --vault-token VAULTTOKEN     Vault token
+```
+
+### Example - vault2vault.rb
+
+```
+./vault2vault.rb --vault https://vault.example.com \
+   --vault-token s.xWxWxWxWxW \
+   --key-value1 kv/data/data/vault-secrets-demo/master/files \
+   --key-value2 kv/data/data/vault-secrets-demo/test/files
 ```
